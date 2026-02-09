@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add scroll effect to navbar
   const navbar = document.querySelector('.navbar');
-  let lastScroll = 0;
 
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
@@ -93,8 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       navbar?.classList.remove('scrolled');
     }
-
-    lastScroll = currentScroll;
   });
 
   // Observe cards for staggered animation
