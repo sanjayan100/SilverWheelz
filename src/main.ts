@@ -1,8 +1,8 @@
 import './style.css'
 
 // WhatsApp Configuration
-const WHATSAPP_NUMBER = '919540011688'; // Silver Wheelz reservations number
-const DEFAULT_MESSAGE = 'Hello Silver Wheelz! I would like to book a ride. Please provide me with more details.';
+const WHATSAPP_NUMBER = '919540011688';
+const DEFAULT_MESSAGE = ' Hi Silver Wheelz, I\'m interested I would like to book a ride. Please provide me with more details.';
 
 // Function to open WhatsApp with pre-filled message
 const openWhatsApp = (message: string = DEFAULT_MESSAGE) => {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (whatsappFloat) {
     whatsappFloat.addEventListener('click', (e) => {
       e.preventDefault();
-      openWhatsApp('Hello! I need assistance with booking a ride.');
+      openWhatsApp('Hi Silver Wheelz, I\'m interested I would like to book a ride. Please provide me with more details.');
     });
   }
 
@@ -37,6 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', (e) => {
       e.preventDefault();
       openWhatsApp(DEFAULT_MESSAGE);
+    });
+  });
+
+  // Handle Fleet Card WhatsApp buttons
+  const fleetWhatsappButtons = document.querySelectorAll('.fleet-deal-btn.whatsapp');
+  fleetWhatsappButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = button.closest('.fleet-deal-card');
+      if (card) {
+        const carName = card.querySelector('h3')?.textContent || 'this car';
+        const customMessage = `Hi, I'm interested in renting the ${carName}. Can you please provide more information?`;
+        openWhatsApp(customMessage);
+      }
     });
   });
 
@@ -132,6 +146,31 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', updateActiveNav);
+
+  // FAQ Toggle Functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other FAQ items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+        } else {
+          item.classList.add('active');
+        }
+      });
+    }
+  });
 
   // Console log for development
   console.log('Silver Wheelz website initialized');
