@@ -591,27 +591,21 @@ body {
 
 .fleet-filters {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 0.8rem;
-  justify-content: center;
-  margin-bottom: 2.8rem;
-  overflow-x: auto;
-  padding-bottom: 0.3rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.fleet-filters::-webkit-scrollbar {
-  height: 0;
-  display: none;
-}
-
-.fleet-filters::-webkit-scrollbar-thumb {
-  background: rgba(255, 91, 107, 0.4);
-  border-radius: 999px;
+  flex-wrap: nowrap;          /* All buttons in one row */
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;           /* Horizontal scrolling */
+  overflow-y: hidden;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  scrollbar-width: thin;
 }
 
 .fleet-pill {
+  flex: 0 0 auto;
   border: 1.5px solid var(--accent-rose);
   background: transparent;
   color: var(--primary-color);
@@ -622,6 +616,23 @@ body {
   transition: var(--transition);
   white-space: nowrap;
 }
+
+.fleet-filters::-webkit-scrollbar-thumb {
+  background: rgba(255, 91, 107, 0.4);
+  border-radius: 999px;
+}
+/* 
+.fleet-pill {
+  border: 1.5px solid var(--accent-rose);
+  background: transparent;
+  color: var(--primary-color);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+} */
 
 .fleet-pill.active,
 .fleet-pill:hover {
