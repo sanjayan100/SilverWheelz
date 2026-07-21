@@ -1,7 +1,7 @@
 import './style.css'
 
 // WhatsApp Configuration
-const WHATSAPP_NUMBER = '919540011688';
+const WHATSAPP_NUMBER = '919540011444';
 const DEFAULT_MESSAGE = ' Hi Silver Wheelz, I\'m interested I would like to book a ride. Please provide me with more details.';
 
 // Function to open WhatsApp with pre-filled message
